@@ -18,6 +18,3 @@ printf ("output is = %d , %d",c, d);
 return 0;
 }
 
-
-Answer 3️⃣:
-
