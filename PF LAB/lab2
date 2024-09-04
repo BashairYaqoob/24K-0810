@@ -1,2 +1,0 @@
-Answer 1: The int data type in C typically has a range of -2,147,483,648 to 2,147,483,647.
-The value 3000000000 exceeds this range . The printed output is the highest value that int can take.
