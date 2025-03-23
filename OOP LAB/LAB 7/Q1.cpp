@@ -8,15 +8,15 @@ class Device{
     bool status;
     string location;
     Device(int id, string name, string l): deviceID(id), deviceName(name), location(l){
-        status = (getStatus()? "ON" : "OFF");
+        status = false;
     }
     virtual void turnON(){
         status = true;
-        cout<<;
+        cout<<"ON";
     }
-    void turnOFF(){
+    virtual void turnOFF(){
         status = false;
-        return status;
+        cout<<"OFF";
     }
     virtual bool getStatus(){
         return status;
@@ -50,7 +50,43 @@ class SecurityCamera : public Device{
     int resolution;
     bool recordingStatus;
     bool nightVisonEnabled;
-    bool turnON(){
-
+    SecurityCamera(int id, string name, string l, int r, bool rs, bool nv): Device(id, name, l), resolution(r), recordingStatus(rs), nightVisonEnabled(nv){}
+    void turnON(){
+        recordingStatus = true;
+        cout<<"Recording ON";
     }
 };
+class SmartPlug : public Device{
+    public:
+    float PowerConsumption;
+    string timerSetting;
+    SmartPlug(int id, string name, string l, float p, string t): Device(id, name, l), PowerConsumption(p), timerSetting(t){}
+    void turnOFF(){
+        cout << "Power Consumption: " << PowerConsumption << " kWh logged." << endl;
+    }
+    void displayInfo(){
+        Device::displayInfo();
+        cout << ", Power Consumption: " << PowerConsumption << ", Timer Setting: " << timerSetting << endl;
+    }
+};
+
+int main() {
+    Light light(101, "Torch Light", "Living Room", "High", "Warm White");
+    Thermostat t(102, "Smart Thermostat", "Bedroom", 22.5, "Heating", 24.0);
+    SecurityCamera camera(103, "CCTV Camera", "Front Door", 1080, false, true);
+    SmartPlug plug(104, "Kitchen Plug", "Kitchen", 1.2, "2 hours");
+    light.turnON();
+    light.displayInfo();
+
+    t.turnON();
+    t.getStatus();
+
+    camera.turnON();
+    camera.displayInfo();
+
+    plug.turnON();
+    plug.turnOFF();
+    plug.displayInfo();
+
+    return 0;
+}
