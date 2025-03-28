@@ -36,7 +36,7 @@ int main(){
     Rupee wholesale(100), retail, addedprice(50), discount(20);
     retail = wholesale;
     cout<<"Wholesale:"<<wholesale<<endl;
-    retail=wholesale+addedprice;
+    retail=wholesale+addedprice;  //wholesale.operator + (addedprice)
     cout<<"Added price:"<<retail<<endl;
     retail-=discount;
     cout<<"Discounted price:"<<retail<<endl;
