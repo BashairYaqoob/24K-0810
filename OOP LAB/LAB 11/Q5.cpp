@@ -36,14 +36,14 @@ int main() {
         cout << "Attempting to set stock to -5..." << endl;
         item.setStock(-5);
     } catch (const NegativeStockException& e) {
-        cout << "Caught NegativeStockException \n-  what(): " << e.what() << endl;
+        cout << "Caught NegativeStockException -  what(): " << e.what() << endl;
     }
 
     try {
         cout << "\nAttempting to set stock to 120 (max 100)..." << endl;
         item.setStock(120);
     } catch (const OverCapacityException& e) {
-        cout << "Caught OverCapacityException \n-  what(): " << e.what() << endl;
+        cout << "Caught OverCapacityException -  what(): " << e.what() << endl;
     }
 
     return 0;
